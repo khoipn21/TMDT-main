@@ -9,6 +9,11 @@ import Register from "./screens/Register";
 import ProfileScreen from "./screens/ProfileScreen";
 import PrivateRouter from "./PrivateRouter";
 import NotFound from "./screens/NotFound";
+import CartScreen from "./screens/CartScreen";
+import ShippingScreen from "./screens/ShippingScreen";
+import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
 
 const App = () => {
   return (
@@ -26,6 +31,12 @@ const App = () => {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <PrivateRouter path="/profile" component={ProfileScreen} />
+        <Route path="/cart/:id?" component={CartScreen} />
+        <PrivateRouter path="/shipping" component={ShippingScreen} />
+        <PrivateRouter path="/payment" component={PaymentScreen} />
+        <PrivateRouter path="/placeorder" component={PlaceOrderScreen} />
+        <PrivateRouter path="/order/:id" component={OrderScreen} />
+        <Route path="*" component={NotFound} />
       </Switch>
     </Router>
   );
