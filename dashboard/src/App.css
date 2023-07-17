@@ -390,3 +390,117 @@ body.aside-mini .menu-aside .menu-item.has-submenu .menu-link:after {
   direction: ltr;
 }
 
+/* ITEMSIDE */
+.itemside {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.itemside .aside,
+.itemside .left {
+  position: relative;
+  flex-shrink: 0;
+}
+.itemside .info {
+  padding-left: 15px;
+  padding-right: 7px;
+}
+.itemside p {
+  margin-bottom: 0;
+}
+.itemside .title {
+  display: block;
+  margin-bottom: 5px;
+}
+.itemside a.title:hover {
+  color: #ef233c;
+}
+
+a.itemside {
+  color: initial;
+  text-decoration: none;
+}
+a.itemside:hover .title {
+  text-decoration: underline;
+}
+
+/* BASE STYLE FOR PRODUCT ITEM */
+[class*="card-product"] {
+  border: 1px solid rgba(108, 117, 125, 0.25);
+}
+[class*="card-product"] p {
+  margin-bottom: 0;
+}
+[class*="card-product"] .img-wrap {
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  background: white;
+}
+[class*="card-product"] .img-wrap img {
+  height: 100%;
+  max-width: 100%;
+  width: auto;
+  display: inline-block;
+  object-fit: cover;
+}
+
+/* GRID STYLE PRODUCT ITEM */
+.card-product-grid {
+  margin-bottom: 20px;
+}
+.card-product-grid .img-wrap {
+  border-radius: 0.2rem 0.2rem 0 0;
+  height: 220px;
+}
+.card-product-grid .info-wrap {
+  padding: 1rem;
+}
+.card-product-grid a.title {
+  color: #6c757d;
+  display: block;
+  text-decoration: none;
+}
+.card-product-grid a.title:hover {
+  color: #ef233c;
+}
+.card-product-grid:hover {
+  border-color: #adb5bd;
+}
+
+/* LARGE LIST STYLE PRODUCT ITEM */
+.card-product-list {
+  margin-bottom: 20px;
+}
+.card-product-list .img-wrap {
+  height: 220px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.card-product-list .info-main {
+  padding: 1.5rem 1rem;
+}
+.card-product-list .info-aside {
+  padding: 1.5rem 1rem;
+  border-left: 1px solid rgba(108, 117, 125, 0.25);
+  height: 100%;
+}
+
+.card-user {
+  margin-bottom: 20px;
+}
+.card-user .card-header {
+  position: relative;
+  height: 100px;
+  background-color: #ffc3ca !important;
+  text-align: center;
+}
+.card-user .img-avatar {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 100%;
+}
+.card-user .card-body {
+  text-align: center;
+}
