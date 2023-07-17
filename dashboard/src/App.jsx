@@ -5,8 +5,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "./Redux/Actions/ProductActions";
 import { listOrders } from "./Redux/Actions/OrderActions";
+import Login from "./screens/LoginScreen";
 import PrivateRouter from "./PrivateRouter";
 import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import AddProduct from "./screens/AddProduct";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import NotFound from "./screens/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +31,14 @@ function App() {
       <Router>
         <Switch>
           <PrivateRouter path="/" component={HomeScreen} exact />
+          <Route path="/login" component={Login} />
+          <PrivateRouter path="/products" component={ProductScreen} />
+          <PrivateRouter path="/addproduct" component={AddProduct} />
+          <PrivateRouter
+            path="/product/:id/edit"
+            component={ProductEditScreen}
+          />
+          <PrivateRouter path="*" component={NotFound} />
         </Switch>
       </Router>
     </>
