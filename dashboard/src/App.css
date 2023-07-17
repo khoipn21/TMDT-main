@@ -504,3 +504,105 @@ a.itemside:hover .title {
 .card-user .card-body {
   text-align: center;
 }
+
+/* --------- description list --------*/
+[class*="dlist"] {
+  margin-bottom: 5px;
+}
+
+.dlist-inline dt,
+.dlist-inline dd {
+  display: inline-block;
+}
+
+.dlist {
+  display: flex;
+}
+.dlist dt {
+  width: 150px;
+  font-weight: normal;
+}
+.dlist dd {
+  margin-left: 30px;
+  vertical-align: baseline;
+  flex-grow: 1;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+/* -------------------- list.row--------------------- */
+ul.row,
+ul.row-sm {
+  list-style: none;
+  padding: 0;
+}
+
+/* ================= lists ================= */
+[class*="list-"] li:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  overflow: hidden;
+  height: 0;
+  clear: both;
+}
+
+.icontext {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px;
+}
+.icontext .icon {
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.icontext small,
+.icontext .title {
+  display: block;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 7px;
+  background: #f2f2f2;
+  border: 1px xolid #eee;
+  border-radius: 3px;
+  margin-top: 4px;
+  margin-right: 2px;
+  font-size: 85%;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.notify {
+  position: absolute;
+  top: -4px;
+  right: -10px;
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  font-size: 75%;
+  line-height: 1;
+  text-align: center;
+  border-radius: 3rem;
+  color: #fff;
+  background-color: #f30000;
+}
+
+.icon-action {
+  margin-top: 5px;
+  float: right;
+}
+
+/* ====================== box ==================== */
+.box {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(108, 117, 125, 0.2);
+  background: #fff;
+}
+.box img {
+  max-width: 100%;
+}
