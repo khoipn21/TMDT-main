@@ -41,7 +41,7 @@ textarea:focus {
 }
 .Announcement {
   background-color: #ef233c;
-  padding: 20px 0px 16px 0px;
+  padding: 10px 0px 8px 0px;
 }
 .Announcement .col-md-6 p {
   color: white;
@@ -725,7 +725,7 @@ textarea:focus {
   margin: 10px;
 }
 .card-name img {
-  width: 100%;
+  width: 150%;
   height: 50px;
   object-fit: contain;
 }
