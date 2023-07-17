@@ -11,6 +11,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import AddProduct from "./screens/AddProduct";
 import ProductEditScreen from "./screens/ProductEditScreen";
+import UsersScreen from "./screens/UsersScreen";
 import NotFound from "./screens/NotFound";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             path="/product/:id/edit"
             component={ProductEditScreen}
           />
+          <PrivateRouter path="/users" component={UsersScreen} />
           <PrivateRouter path="*" component={NotFound} />
         </Switch>
       </Router>
