@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "./Redux/Actions/ProductActions";
 import { listOrders } from "./Redux/Actions/OrderActions";
+import Login from "./screens/LoginScreen";
 import PrivateRouter from "./PrivateRouter";
 import HomeScreen from "./screens/HomeScreen";
 
@@ -26,6 +27,7 @@ function App() {
       <Router>
         <Switch>
           <PrivateRouter path="/" component={HomeScreen} exact />
+          <Route path="/login" component={Login} />
         </Switch>
       </Router>
     </>
