@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 const Pagination = (props) => {
   const { page, pages, keyword = "" } = props;
+
+  if (pages === 0) {
+    return <div>No Results</div>;
+  }
+
   return (
     pages > 1 && (
       <nav>
