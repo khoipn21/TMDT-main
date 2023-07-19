@@ -177,9 +177,12 @@ const PlaceOrderScreen = ({ history }) => {
               </tbody>
             </table>
             {cart.cartItems.length === 0 ? null : (
-              <button type="submit" onClick={placeOrderHandler}>
-                ĐẶT HÀNG
-              </button>
+              <>
+                <button type="submit" onClick={placeOrderHandler}>
+                  ĐẶT HÀNG
+                </button>
+                <Link to="/cart"><button className="cancel-btn">Hủy</button></Link>
+              </>
             )}
             {error && (
               <div className="my-3 col-12">
