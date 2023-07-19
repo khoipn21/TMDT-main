@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deliverOrder,
   getOrderDetails,
+  payOrder,
 } from "../../Redux/Actions/OrderActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
@@ -21,12 +22,22 @@ const OrderDetailmain = (props) => {
   const orderDeliver = useSelector((state) => state.orderDeliver);
   const { loading: loadingDelivered, success: successDelivered } = orderDeliver;
 
+  const orderPay = useSelector((state) => state.orderPay);
+  const { loading: loadingPaid, success: successPaid } = orderPay;
+
   useEffect(() => {
     dispatch(getOrderDetails(orderId));
   }, [dispatch, orderId, successDelivered]);
+  
+  useEffect(() => {
+    dispatch(getOrderDetails(orderId));
+  }, [dispatch, orderId, successPaid]);
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order));
+  };
+  const payHandler = () => {
+    dispatch(payOrder(order));
   };
 
   return (
@@ -47,7 +58,7 @@ const OrderDetailmain = (props) => {
             <div className="row align-items-center ">
               <div className="col-lg-6 col-md-6">
                 <span>
-                  <i className="far fa-calendar-alt mx-2"></i>
+                  <i className="far fa-calendar-alt mx-2 text-white"></i>
                   <b className="text-white">
                     {moment(order.createdAt).format("llll")}
                   </b>
@@ -58,7 +69,7 @@ const OrderDetailmain = (props) => {
                 </small>
               </div>
               <div className="col-lg-6 col-md-6 ms-auto d-flex justify-content-end align-items-center">
-                <Link className="btn btn-success ms-2" to="#">
+                <Link className="btn btn-danger ms-2 border border-dark" to="#">
                   <i className="fas fa-print"></i>
                 </Link>
               </div>
@@ -76,7 +87,7 @@ const OrderDetailmain = (props) => {
               </div>
               {/* Payment Info */}
               <div className="col-lg-3">
-                <div className="box shadow-sm bg-light">
+                <div className="box shadow-sm bg-light mb-5">
                   {order.isDelivered ? (
                     <button className="btn btn-success col-12">
                       ĐÃ GIAO ({" "}
@@ -90,6 +101,24 @@ const OrderDetailmain = (props) => {
                         className="btn btn-dark col-12"
                       >
                         XÁC NHẬN LÀ ĐÃ GIAO HÀNG
+                      </button>
+                    </>
+                  )}
+                </div>
+                <div className="box shadow-sm bg-light">
+                  {order.isPaid ? (
+                    <button className="btn btn-success col-12">
+                      ĐÃ THANH TOÁN ({" "}
+                      {moment(order.isPaidAt).format("MMM Do YY")})
+                    </button>
+                  ) : (
+                    <>
+                      {loadingPaid && <Loading />}
+                      <button
+                        onClick={payHandler}
+                        className="btn col-12 btn-danger"
+                      >
+                        XÁC NHẬN LÀ ĐÃ THANH TOÁN
                       </button>
                     </>
                   )}

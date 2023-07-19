@@ -653,6 +653,7 @@ textarea:focus {
   margin-top: 20px;
 }
 .radio-container {
+  display: flex;
   padding: 10px 0;
   text-align: start;
 }

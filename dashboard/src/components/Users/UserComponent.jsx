@@ -8,6 +8,13 @@ import Message from "../LoadingError/Error";
 const UserComponent = () => {
   const dispatch = useDispatch();
 
+  const userDelete = useSelector((state) => state.userDelete);
+  const { error: errorDelete, success: successDelete } = userDelete;
+
+  useEffect(() => {
+    dispatch(listUser());
+  }, [dispatch, successDelete]);
+
   const deletehandler = (id) => {
     if (window.confirm("Are you sure??")) {
       dispatch(deleteUser(id));
@@ -49,6 +56,9 @@ const UserComponent = () => {
 
         {/* Card */}
         <div className="card-body">
+          {errorDelete && (
+            <Message variant="alert-danger">{errorDelete}</Message>
+          )}
           {loading ? (
             <Loading />
           ) : error ? (
@@ -81,7 +91,7 @@ const UserComponent = () => {
                       <Link
                         to="/users"
                         onClick={() => deletehandler(user._id)}
-                        className="btn btn-sm btn-outline-danger p-2 pb-3 col-md-6"
+                        className="btn btn-sm btn-outline-danger p-4 col-md-6 w-100 mt-3"
                       >
                         <i className="fas fa-trash-alt"></i>
                       </Link>

@@ -6,8 +6,8 @@ const OrderDetailInfo = (props) => {
     <div className="row mb-5 order-info-wrap">
       <div className="col-md-6 col-lg-4">
         <article className="icontext align-items-start">
-          <span className="icon icon-sm rounded-circle alert-success">
-            <i className="text-success fas fa-user"></i>
+          <span className="icon icon-sm rounded-circle icon-bg">
+            <i className="icon-main fas fa-user"></i>
           </span>
           <div className="text">
             <h6 className="mb-1">Khách hàng</h6>
@@ -20,8 +20,8 @@ const OrderDetailInfo = (props) => {
       </div>
       <div className="col-md-6 col-lg-4">
         <article className="icontext align-items-start">
-          <span className="icon icon-sm rounded-circle alert-success">
-            <i className="text-success fas fa-truck-moving"></i>
+          <span className="icon icon-sm rounded-circle icon-bg">
+            <i className="icon-main fas fa-truck-moving"></i>
           </span>
           <div className="text">
             <h6 className="mb-1">Thông tin đơn hàng</h6>
@@ -34,8 +34,8 @@ const OrderDetailInfo = (props) => {
       </div>
       <div className="col-md-6 col-lg-4">
         <article className="icontext align-items-start">
-          <span className="icon icon-sm rounded-circle alert-success">
-            <i className="text-success fas fa-map-marker-alt"></i>
+          <span className="icon icon-sm rounded-circle icon-bg">
+            <i className="icon-main fas fa-map-marker-alt"></i>
           </span>
           <div className="text">
             <h6 className="mb-1">Giao đến</h6>

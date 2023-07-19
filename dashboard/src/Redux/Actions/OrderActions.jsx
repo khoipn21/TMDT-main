@@ -8,6 +8,10 @@ import {
   ORDER_LIST_FAIL,
   ORDER_LIST_REQUEST,
   ORDER_LIST_SUCCESS,
+  ORDER_PAID_FAIL,
+  ORDER_PAID_REQUEST,
+  ORDER_PAID_SUCCESS,
+  ORDER_PAID_RESET,
 } from "../Constants/OrderConstants";
 import { logout } from "./UserActions";
 import axios from "axios";
@@ -108,6 +112,42 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
     dispatch({
       type: ORDER_DELIVERED_FAIL,
+      payload: message,
+    });
+  }
+};
+
+// ORDER DELIVER
+export const payOrder = (order) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ORDER_PAID_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(
+      `${URL}/api/orders/${order._id}/pay`,
+      {},
+      config
+    );
+    dispatch({ type: ORDER_PAID_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: ORDER_PAID_FAIL,
       payload: message,
     });
   }

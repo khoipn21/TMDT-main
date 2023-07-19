@@ -606,3 +606,12 @@ ul.row-sm {
 .box img {
   max-width: 100%;
 }
+
+
+.icon-bg {
+  background-color: #ffc3ca;
+}
+
+.icon-main{
+  color: #ef233c;
+}
