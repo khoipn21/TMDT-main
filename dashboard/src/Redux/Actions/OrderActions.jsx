@@ -9,7 +9,7 @@ import {
   ORDER_LIST_REQUEST,
   ORDER_LIST_SUCCESS,
 } from "../Constants/OrderConstants";
-import { logout } from "./userActions";
+import { logout } from "./UserActions";
 import axios from "axios";
 import { URL } from "../Url";
 

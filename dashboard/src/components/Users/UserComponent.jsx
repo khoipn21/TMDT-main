@@ -1,12 +1,18 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listUser } from "../../Redux/Actions/userActions";
+import { listUser, deleteUser } from "../../Redux/Actions/UserActions";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
 
 const UserComponent = () => {
   const dispatch = useDispatch();
+
+  const deletehandler = (id) => {
+    if (window.confirm("Are you sure??")) {
+      dispatch(deleteUser(id));
+    }
+  };
 
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
@@ -72,6 +78,13 @@ const UserComponent = () => {
                           <a href={`mailto:${user.email}`}>{user.email}</a>
                         </p>
                       </div>
+                      <Link
+                        to="/users"
+                        onClick={() => deletehandler(user._id)}
+                        className="btn btn-sm btn-outline-danger p-2 pb-3 col-md-6"
+                      >
+                        <i className="fas fa-trash-alt"></i>
+                      </Link>
                     </div>
                   </div>
                 </div>

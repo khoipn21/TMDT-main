@@ -125,4 +125,33 @@ userRouter.get(
   })
 );
 
+userRouter.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404);
+      throw new Error("User not Found");
+    }
+  })
+);
+
+userRouter.delete(
+  "/:id",
+  protect,
+  admin,
+  asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      await user.remove();
+      res.json({ message: "User deleted" });
+    } else {
+      res.status(404);
+      throw new Error("User not Found");
+    }
+  })
+);
+
 export default userRouter;

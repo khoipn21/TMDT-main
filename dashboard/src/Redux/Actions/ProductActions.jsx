@@ -16,7 +16,7 @@ import {
   PRODUCT_UPDATE_SUCCESS,
 } from "../Constants/ProductConstants";
 import axios from "axios";
-import { logout } from "./userActions";
+import { logout } from "./UserActions";
 import { URL } from "../Url";
 
 export const listProducts = () => async (dispatch, getState) => {
