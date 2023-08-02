@@ -14,7 +14,7 @@ import {
 } from "../Constants/OrderConstants";
 import axios from "axios";
 import { CART_CLEAR_ITEMS } from "../Constants/CartConstants";
-import { logout } from "./userActions";
+import { logout } from "./UserActions";
 import { URL } from "../Url";
 
 // CREATE ORDER

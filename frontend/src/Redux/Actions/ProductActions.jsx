@@ -11,7 +11,7 @@ import {
   PRODUCT_LIST_SUCCESS,
 } from "../Constants/ProductConstants";
 import { URL } from "../Url";
-import { logout } from "./userActions";
+import { logout } from "./UserActions";
 
 // PRODUCT LIST
 export const listProduct =
