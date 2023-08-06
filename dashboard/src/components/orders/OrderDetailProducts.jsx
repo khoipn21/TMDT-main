@@ -43,7 +43,7 @@ const OrderDetailProducts = (props) => {
                 <div className="info">{item.name}</div>
               </Link>
             </td>
-            <td>{item.price} VND</td>
+            <td>{item.price.toLocaleString("en-US")}₫</td>
             <td>{item.qty} </td>
             <td className="text-end"> {item.qty * item.price} đ</td>
           </tr>
@@ -53,15 +53,17 @@ const OrderDetailProducts = (props) => {
           <td colSpan="4">
             <article className="float-end">
               <dl className="dlist">
-                <dt>Giá:</dt> <dd>{order.itemsPrice} VND</dd>
+                <dt>Giá:</dt>{" "}
+                <dd>{order.itemsPrice.toLocaleString("en-US")}₫</dd>
               </dl>
               <dl className="dlist">
-                <dt>Phí vận chuyển:</dt> <dd>{order.shippingPrice} VND</dd>
+                <dt>Phí vận chuyển:</dt>{" "}
+                <dd>{order.shippingPrice.toLocaleString("en-US")}₫</dd>
               </dl>
               <dl className="dlist">
                 <dt>Tổng cộng:</dt>
                 <dd>
-                  <b className="h5">{order.totalPrice} VND</b>
+                  <b className="h5">{order.totalPrice}₫</b>
                 </dd>
               </dl>
               <dl className="dlist">

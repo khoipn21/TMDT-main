@@ -17,14 +17,32 @@ const Product = (props) => {
     <>
       <div className="col-md-6 col-sm-6 col-lg-3 mb-5">
         <div className="card card-product-grid shadow-sm">
-          <Link to="#" className="img-wrap">
+          <Link to={`/product/${product._id}/edit`} className="img-wrap">
             <img src={product.image} alt="Product" />
           </Link>
           <div className="info-wrap">
-            <Link to="#" className="title text-truncate">
+            <Link
+              to={`/product/${product._id}/edit`}
+              className="title text-truncate"
+            >
               {product.name}
             </Link>
-            <div className="price mb-2">{product.price} đ</div>
+            <div className="price mb-2">
+              {product.promotion > 0 ? (
+                <span className="">
+                  {product.promotion.toLocaleString("en-US", {
+                    maximumFractionDigits: 0,
+                  })}
+                  ₫
+                  <tab></tab>
+                  <del className="promote-text text-muted">
+                    {product.price.toLocaleString("en-US")}₫
+                  </del>
+                </span>
+              ) : (
+                <span>{product.price.toLocaleString("en-US")}₫</span>
+              )}
+            </div>
             <div className="row">
               <Link
                 to={`/product/${product._id}/edit`}

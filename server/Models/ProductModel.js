@@ -16,6 +16,10 @@ const reviewSchema = mongoose.Schema(
   }
 );
 
+const categorySchema = mongoose.Schema({
+  category: { type: [], required: true },
+})
+
 const productSchema = mongoose.Schema(
   {
     name: {
@@ -50,13 +54,22 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
-    size: { 
+    size: {
       type: Array,
       required: true,
-     },
+    },
     color: {
-       type: Array,
-      required: true, },
+      type: Array,
+      required: true,
+    },
+    promotion: {
+      type: Number,
+      required: true,
+    },
+    category: {
+      type: Array,
+      required: true,
+    }
   },
   {
     timestamps: true,

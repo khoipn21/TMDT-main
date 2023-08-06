@@ -37,6 +37,13 @@ function App() {
           <PrivateRouter path="/" component={HomeScreen} exact />
           <Route path="/login" component={Login} />
           <PrivateRouter path="/products" component={ProductScreen} />
+          {/* <Route path="/search/:keyword" component={ProductScreen} exact />
+          <Route path="/page/:pagenumber" component={ProductScreen} exact />
+          <Route
+            path="/search/:keyword/page/:pageNumber"
+            component={ProductScreen}
+            exact
+          /> */}
           <PrivateRouter path="/addproduct" component={AddProduct} />
           <PrivateRouter
             path="/product/:id/edit"

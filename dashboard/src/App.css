@@ -4,6 +4,10 @@
 INCLUDE STYLES AND COMPONENTS
 ===================== */
 /* ================== HELPERS =================== */
+tab {
+  display: inline-block;
+  margin-left: 40px;
+}
 .table thead th {
   color: #adb5bd;
   font-weight: 400;
@@ -607,11 +611,33 @@ ul.row-sm {
   max-width: 100%;
 }
 
-
 .icon-bg {
   background-color: #ffc3ca;
 }
 
-.icon-main{
+.icon-main {
   color: #ef233c;
+}
+.search-bar {
+  width: 100%;
+}
+
+.category-suggestions {
+  border: 1px solid #ccc;
+  border-top: none;
+  z-index: 1;
+  background-color: #fff;
+  padding: 0.5rem;
+  width: 100%;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.category-suggestion {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.category-suggestion:hover {
+  background-color: #f1f1f1;
 }

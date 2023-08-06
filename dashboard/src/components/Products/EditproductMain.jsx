@@ -23,6 +23,10 @@ const EditProductMain = (props) => {
   const [image, setImage] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const [promotion, setPromotion] = useState(0);
+  const [promotionError, setPromotionError] = useState("");
+  const [categoryInput, setCategoryInput] = useState("");
+  const [categorySuggestions, setCategorySuggestions] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -49,12 +53,63 @@ const EditProductMain = (props) => {
         setCountInStock(product.countInStock);
         setImage(product.image);
         setPrice(product.price);
+        setPromotion(product.promotion);
+        setCategoryInput(product.category.join(", "));
       }
     }
   }, [product, dispatch, productId, successUpdate]);
 
+  const mapExistingCategories = (products) => {
+    const categoriesSet = new Set();
+    products.forEach((product) => {
+      product.category.forEach((cat) => {
+        categoriesSet.add(cat.toLowerCase());
+      });
+    });
+    return Array.from(categoriesSet);
+  };
+
+  // Sample list of products for testing
+  const existingProducts = useSelector((state) => state.productList);
+  const { products } = existingProducts;
+  const existingCategories = mapExistingCategories(products);
+
+  const handleCategoryInputChange = (inputValue) => {
+    const lastCommaIndex = inputValue.lastIndexOf(",");
+    const lastCategory = inputValue
+      .substring(lastCommaIndex + 1)
+      .trim()
+      .toLowerCase();
+
+    const suggestions =
+      lastCategory === ""
+        ? []
+        : existingCategories.filter((category) =>
+            category.startsWith(lastCategory)
+          );
+
+    setCategoryInput(inputValue);
+    setCategorySuggestions(suggestions);
+  };
+
+  const handleCategorySuggestionSelect = (suggestion) => {
+    const lastCommaIndex = categoryInput.lastIndexOf(",");
+    const beforeComma = categoryInput.substring(0, lastCommaIndex + 1);
+    setCategoryInput(`${beforeComma} ${suggestion}, `);
+    setCategorySuggestions([]);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
+    if (parseFloat(promotion) > parseFloat(price)) {
+      setPromotionError("Promotion cannot be greater than the price.");
+      return;
+    } else setPromotionError("");
+
+    const category = categoryInput
+      .split(",")
+      .map((cat) => cat.trim())
+      .filter((cat) => cat !== "");
     dispatch(
       updateProduct({
         _id: productId,
@@ -63,6 +118,8 @@ const EditProductMain = (props) => {
         description,
         image,
         countInStock,
+        promotion,
+        category,
       })
     );
   };
@@ -102,6 +159,9 @@ const EditProductMain = (props) => {
             <div className="col-xl-8 col-lg-8">
               <div className="card mb-4 shadow-sm">
                 <div className="card-body">
+                  {promotionError && (
+                    <Message variant="alert-danger">{promotionError}</Message>
+                  )}
                   {errorUpdate && (
                     <Message variant="alert-danger">{errorUpdate}</Message>
                   )}
@@ -125,6 +185,32 @@ const EditProductMain = (props) => {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                         />
+                      </div>
+                      <div className="mb-4">
+                        <label className="form-label">Thể loại</label>
+                        <input
+                          type="text"
+                          placeholder="Type here"
+                          className="form-control"
+                          value={categoryInput}
+                          onChange={(e) =>
+                            handleCategoryInputChange(e.target.value)
+                          }
+                        />
+                        {categorySuggestions.length > 0 && (
+                          <ul className="category-suggestions">
+                            {categorySuggestions.map((suggestion, index) => (
+                              <li
+                                key={index}
+                                onClick={() =>
+                                  handleCategorySuggestionSelect(suggestion)
+                                }
+                              >
+                                {suggestion}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                       <div className="mb-4">
                         <label htmlFor="product_price" className="form-label">
@@ -152,6 +238,20 @@ const EditProductMain = (props) => {
                           required
                           value={countInStock}
                           onChange={(e) => setCountInStock(e.target.value)}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label htmlFor="product_price" className="form-label">
+                          Giá khuyến mãi
+                        </label>
+                        <input
+                          type="number"
+                          placeholder="Type here"
+                          className="form-control"
+                          id="product_promotion"
+                          required
+                          value={promotion}
+                          onChange={(e) => setPromotion(e.target.value)}
                         />
                       </div>
                       <div className="mb-4">

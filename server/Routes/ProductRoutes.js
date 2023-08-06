@@ -13,11 +13,11 @@ productRoute.get(
     const page = Number(req.query.pageNumber) || 1;
     const keyword = req.query.keyword
       ? {
-          name: {
-            $regex: req.query.keyword,
-            $options: "i",
-          },
-        }
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
       : {};
     const count = await Product.countDocuments({ ...keyword });
     const products = await Product.find({ ...keyword })
@@ -31,8 +31,6 @@ productRoute.get(
 // ADMIN GET ALL PRODUCT WITHOUT SEARCH AND PEGINATION
 productRoute.get(
   "/all",
-  protect,
-  admin,
   asyncHandler(async (req, res) => {
     const products = await Product.find({}).sort({ _id: -1 });
     res.json(products);
@@ -114,7 +112,7 @@ productRoute.post(
   protect,
   admin,
   asyncHandler(async (req, res) => {
-    const { name, price, description, image, countInStock,color, size } = req.body;
+    const { name, price, description, image, countInStock, promotion, category } = req.body;
     const productExist = await Product.findOne({ name });
     if (productExist) {
       res.status(400);
@@ -126,8 +124,8 @@ productRoute.post(
         description,
         image,
         countInStock,
-        color,
-        size,
+        promotion,
+        category,
         user: req.user._id,
       });
       if (product) {
@@ -147,7 +145,7 @@ productRoute.put(
   protect,
   admin,
   asyncHandler(async (req, res) => {
-    const { name, price, description, image, countInStock,color, size } = req.body;
+    const { name, price, description, image, countInStock, color, size, promotion, category } = req.body;
     const product = await Product.findById(req.params.id);
     if (product) {
       product.name = name || product.name;
@@ -157,7 +155,8 @@ productRoute.put(
       product.countInStock = countInStock || product.countInStock;
       product.color = color || product.color;
       product.size = size || product.size;
-
+      product.promotion = promotion || product.promotion;
+      product.category = category || product.category;
       const updatedProduct = await product.save();
       res.json(updatedProduct);
     } else {
