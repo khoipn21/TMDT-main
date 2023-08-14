@@ -6,8 +6,23 @@ TMDT là một trang web mã nguồn mở được viết bằng:
 - Back-end: NodeJS, ExpressJS, MongoDB
 
 ## Tính năng
-- Người dùng: Đăng ký tài khoản, đăng nhập, tìm kiếm, tìm kiếm nâng cao dựa trên thể loại, theo sản phẩm vào giỏ, quản lý sản phẩm, quản lý hồ sơ người dùng, đổi mật khẩu, thanh toán, xem trạng thái đơn hàng.
-- Admin: Quản lý sản phẩm, thêm sản phẩm, quản lý và cập nhật trạng thái đơn hàng, xem thông số bán hàng, quản lý người dùng.
+- Người dùng:
+  1. Đăng ký tài khoản
+  2. Đăng nhập
+  3. Tìm kiếm
+  4. Tìm kiếm nâng cao dựa trên thể loại
+  5. Thêm sản phẩm vào giỏ
+  6. Quản lý sản phẩm trong giỏ hàng
+  7. Quản lý hồ sơ người dùng
+  8. Đổi mật khẩu
+  9. Xem trạng thái đơn hàng
+  10. Thanh toán đơn hàng
+- Admin:
+  1. Quản lý sản phẩm
+  2. Thêm sản phẩm
+  3. Quản lý và cập nhật trạng thái đơn hàng
+  4. Xem thông số bán hàng
+  5. Quản lý người dùng.
 
 ## Cài đặt
 Clone source về máy và tiến hành cài đặt như sau
