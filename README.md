@@ -38,5 +38,5 @@ Trong đó:
 - `MONGO_URL`: là URL link đến database MongoDB của bạn
 
 ## Contribution
-**Phạm Ngọc Khôi**: https://github.com/khoipn21
+**Phạm Ngọc Khôi**: https://github.com/khoipn21 <br>
 **Cao Quốc Việt**: https://github.com/CaoQuocViet
